@@ -28,6 +28,7 @@ PACKAGES = {
 | spec | options | products |
 | --- | --- | --- |
 | `envy.cmake@r0` | `version` | `cmake` `ctest` `cpack` |
+| `envy.doctest-cpp@r0` | `version` | `doctest_cpp_dir` `doctest_cpp_h` |
 | `envy.ninja@r0` | `version` | `ninja` |
 | `envy.protobuf@r0` | `version` | `protoc` `protobuf_includes` |
 | `envy.python@r0` | `version` `release` `provide_python` `provide_python3` | `python<maj>.<min>`, plus `python`/`python3` when asked |
@@ -40,7 +41,9 @@ Prebuilt downloads, except SWIG, which builds from source on Unix (`--without-pc
 unless `pcre2 = true`, which needs PCRE2 dev files on the host) and uses the prebuilt
 swigwin on Windows. Python comes from
 [python-build-standalone](https://github.com/astral-sh/python-build-standalone), so
-`release` pins the build and `version` the interpreter.
+`release` pins the build and `version` the interpreter. doctest is the amalgamated
+`doctest.h` and nothing else: `doctest_cpp_dir` is the package directory to put on a
+`-I` line, `doctest_cpp_h` the header inside it.
 
 ## Layout
 
