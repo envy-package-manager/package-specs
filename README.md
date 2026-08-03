@@ -1,7 +1,7 @@
 # envy package specs
 
 First-party [envy](https://github.com/envy-package-manager/envy) package specs. The repo
-is one envy bundle: `envy.package-specs@r0`.
+is one envy bundle: `envy.package-specs@r1`.
 
 ## Use
 
@@ -9,7 +9,7 @@ is one envy bundle: `envy.package-specs@r0`.
 -- your envy.lua
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r0",
+    identity = "envy.package-specs@r1",
     source = "git://github.com/envy-package-manager/package-specs",
     ref = "<commit sha>",
   },

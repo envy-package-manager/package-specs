@@ -11,7 +11,7 @@
 
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r0",
+    identity = "envy.package-specs@r1",
     source = envy.abspath(".."),
   },
 }

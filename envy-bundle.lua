@@ -1,5 +1,5 @@
 -- @envy schema "1"
-BUNDLE = "envy.package-specs@r0"
+BUNDLE = "envy.package-specs@r1"
 
 SPECS = {
   ["envy.cmake@r0"] = "specs/cmake.lua",
