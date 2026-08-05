@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.python@r0"
+IDENTITY = "envy.python@r1"
 EXPORTABLE = true
 
 local github = require("lib.github")
@@ -79,5 +79,17 @@ hashes = {
     "cb4eeeda8c8d324e1cd504d6061659f3b7a776ce34ff4db00b6037070163bbfe",
     ["x86_64-pc-windows-msvc"] =
     "9ae78c0a2e4babdbcadee9ccbf9c72882f367b922be98eda87f7edba98462afd",
+  },
+  ["3.14.6+20260623"] = {
+    ["aarch64-apple-darwin"] =
+    "58ba7c2f7a5bad3031065abaad75f701a3e8b7f83679917c396a850876a48205",
+    ["x86_64-apple-darwin"] =
+    "8776df867b4710ff3e688c4b123677a4ac53eea3432e74e91c7b26efe5f72c77",
+    ["aarch64-unknown-linux-gnu"] =
+    "2746a23641001d1e7b7c1cb412b15f60824a8d66f00999a06e84da48b9939179",
+    ["x86_64_v3-unknown-linux-gnu"] =
+    "1b17c10274a77285112fa2399f0a02ffa77808476645985507f971cc6f366bee",
+    ["x86_64-pc-windows-msvc"] =
+    "81e1d5e072ec677d05287f09ce7bfcef35e998c2511ee37ae470c477bace967a",
   },
 }
