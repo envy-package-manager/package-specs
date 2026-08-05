@@ -1,7 +1,7 @@
 # envy package specs
 
 First-party [envy](https://github.com/envy-package-manager/envy) package specs. The repo
-is one envy bundle: `envy.package-specs@r1`.
+is one envy bundle: `envy.package-specs@r2`.
 
 ## Use
 
@@ -9,7 +9,7 @@ is one envy bundle: `envy.package-specs@r1`.
 -- your envy.lua
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r1",
+    identity = "envy.package-specs@r2",
     source = "git://github.com/envy-package-manager/package-specs",
     ref = "<commit sha>",
   },
@@ -31,7 +31,7 @@ PACKAGES = {
 | `envy.doctest-cpp@r0` | `version` | `doctest_cpp_dir` `doctest_cpp_h` |
 | `envy.ninja@r0` | `version` | `ninja` |
 | `envy.protobuf@r0` | `version` | `protoc` `protobuf_includes` |
-| `envy.python@r0` | `version` `release` `provide_python` `provide_python3` | `python<maj>.<min>`, plus `python`/`python3` when asked |
+| `envy.python@r1` | `version` `release` `provide_python` `provide_python3` | `python<maj>.<min>`, plus `python`/`python3` when asked |
 | `envy.ruff@r0` | `version` | `ruff` |
 | `envy.swig@r0` | `version` `pcre2` | `swig` `swiglibdir` |
 | `envy.ty@r0` | `version` | `ty` |

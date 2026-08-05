@@ -11,13 +11,13 @@
 
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r1",
+    identity = "envy.package-specs@r2",
     source = envy.abspath(".."),
   },
 }
 
 PACKAGES = {
-  { spec = "envy.python@r0", bundle = "first-party",
+  { spec = "envy.python@r1", bundle = "first-party",
     options = { version = "3.13.14", release = "20260623", provide_python3 = true } },
 
   { spec = "envy.uv@r0", bundle = "first-party", options = { version = "0.11.30" } },
