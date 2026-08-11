@@ -1,9 +1,10 @@
 -- @envy schema "1"
-BUNDLE = "envy.package-specs@r2"
+BUNDLE = "envy.package-specs@r3"
 
 SPECS = {
   ["envy.cmake@r0"] = "specs/cmake.lua",
   ["envy.doctest-cpp@r0"] = "specs/doctest-cpp.lua",
+  ["envy.gn@r0"] = "specs/gn.lua",
   ["envy.ninja@r0"] = "specs/ninja.lua",
   ["envy.protobuf@r0"] = "specs/protobuf.lua",
   ["envy.python@r1"] = "specs/python.lua",

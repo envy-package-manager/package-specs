@@ -11,7 +11,7 @@
 
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r2",
+    identity = "envy.package-specs@r3",
     source = envy.abspath(".."),
   },
 }
@@ -29,6 +29,10 @@ PACKAGES = {
   { spec = "envy.cmake@r0", bundle = "first-party", options = { version = "4.4.0" } },
 
   { spec = "envy.ninja@r0", bundle = "first-party", options = { version = "1.13.2" } },
+
+  -- GN is keyed by git revision, not version -- see the README.
+  { spec = "envy.gn@r0", bundle = "first-party",
+    options = { ref = "10d3ab4387f7f4ad0d3fb9d626218a6e09e71d86" } },
 
   { spec = "envy.protobuf@r0", bundle = "first-party", options = { version = "35.1" } },
 
