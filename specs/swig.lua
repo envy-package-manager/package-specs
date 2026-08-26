@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.swig@r0"
+IDENTITY = "envy.swig@r1"
 EXPORTABLE = true
 
 local platform = require("lib.platform")
@@ -19,6 +19,13 @@ end
 
 OPTIONS = function() versions.validate(hashes) end
 
+-- SourceForge is the only place upstream publishes these artifacts: the GitHub
+-- repo carries release tags but cuts no GitHub releases, so there is no asset
+-- mirror to prefer, and the swigwin zip's prebuilt swig.exe exists nowhere else.
+-- downloads.sourceforge.net 302s to a mirror picked per request, and an
+-- occasional mirror accepts the connection and then stalls mid-body, so a fetch
+-- failure here is usually transient and lands on a different mirror next time.
+--
 -- Unix builds SWIG against its own static PCRE2, so both tarballs are named in
 -- one array: envy downloads the elements of a returned array concurrently.
 FETCH = function(tmp_dir, opts)
@@ -101,6 +108,10 @@ end
 -- SWIG publishes no checksums; hashes were computed from the downloads.
 -- `source` is the tarball built on Unix; `windows` is the prebuilt swigwin zip.
 hashes = {
+  ["4.5.0"] = {
+    source = "22ae0e887f8cca8031a325c67d005207653200b40e71edb3f88780e28e47d0ff",
+    windows = "d08a5b5cfd3f285ccc13b9ee0667f6e05d07433aaae89e8ae24850e05e62e04e",
+  },
   ["4.4.1"] = {
     source = "40162a706c56f7592d08fd52ef5511cb7ac191f3593cf07306a0a554c6281fcf",
     windows = "ce01474c81120eab381491d8d45cbcce4768fd1e5c23ffc7654b522702769598",

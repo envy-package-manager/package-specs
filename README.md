@@ -1,7 +1,7 @@
 # envy package specs
 
 First-party [envy](https://github.com/envy-package-manager/envy) package specs. The repo
-is one envy bundle: `envy.package-specs@r3`.
+is one envy bundle: `envy.package-specs@r4`.
 
 ## Use
 
@@ -9,7 +9,7 @@ is one envy bundle: `envy.package-specs@r3`.
 -- your envy.lua
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r3",
+    identity = "envy.package-specs@r4",
     source = "git://github.com/envy-package-manager/package-specs",
     ref = "<commit sha>",
   },
@@ -34,13 +34,12 @@ PACKAGES = {
 | `envy.protobuf@r0` | `version` | `protoc` `protobuf_includes` |
 | `envy.python@r1` | `version` `release` `provide_python` `provide_python3` | `python<maj>.<min>`, plus `python`/`python3` when asked |
 | `envy.ruff@r0` | `version` | `ruff` |
-| `envy.swig@r0` | `version` `pcre2` | `swig` `swiglibdir` |
+| `envy.swig@r1` | `version` | `swig` `swiglibdir` |
 | `envy.ty@r0` | `version` | `ty` |
 | `envy.uv@r0` | `version` | `uv` `uvx` |
 
-Prebuilt downloads, except SWIG, which builds from source on Unix (`--without-pcre`
-unless `pcre2 = true`, which needs PCRE2 dev files on the host) and uses the prebuilt
-swigwin on Windows. Python comes from
+Prebuilt downloads, except SWIG, which builds from source on Unix against a PCRE2 it
+statically links itself, and uses the prebuilt swigwin on Windows. Python comes from
 [python-build-standalone](https://github.com/astral-sh/python-build-standalone), so
 `release` pins the build and `version` the interpreter. doctest is the amalgamated
 `doctest.h` and nothing else: `doctest_cpp_dir` is the package directory to put on a
@@ -66,7 +65,9 @@ Every download is hash-verified, so a version only exists once its hashes are re
    sidecars, `SHA256SUMS`, `cmake-<v>-SHA-256.txt`), else download and `shasum -a 256`.
 2. Add a `hashes["<version>"]` entry with one hash per platform key. Every platform key
    already in the table needs one.
-3. Leave `IDENTITY` alone — a new version isn't an interface change.
+3. Bump the spec's revision and the bundle's, and update `envy-bundle.lua`, the
+   table above and `examples/envy.lua` to match. Consumers pin a spec revision, so
+   revving is what lets a manifest ask for the new version.
 
 Conventions: `version` never carries a leading `v` (specs add it to the tag), platform
 keys are upstream's own artifact naming, and products are named after the binary. GN's

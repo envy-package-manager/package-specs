@@ -11,7 +11,7 @@
 
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r3",
+    identity = "envy.package-specs@r4",
     source = envy.abspath(".."),
   },
 }
@@ -36,7 +36,7 @@ PACKAGES = {
 
   { spec = "envy.protobuf@r0", bundle = "first-party", options = { version = "35.1" } },
 
-  { spec = "envy.swig@r0", bundle = "first-party", options = { version = "4.4.1" } },
+  { spec = "envy.swig@r1", bundle = "first-party", options = { version = "4.5.0" } },
 
   { spec = "envy.doctest-cpp@r0", bundle = "first-party", options = { version = "2.5.3" } },
 }
