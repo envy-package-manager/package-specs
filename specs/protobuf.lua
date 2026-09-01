@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.protobuf@r0"
+IDENTITY = "envy.protobuf@r1"
 EXPORTABLE = true
 
 local github = require("lib.github")
@@ -44,5 +44,12 @@ hashes = {
     ["linux-aarch_64"] = "01bf9d08808c7f96678b63f4bd8efa559bb4f83d5a7a270d5edaf507f9d5d9cf",
     ["linux-x86_64"] = "6930ebf62bd4ea607b98fff052596c6ee564b9835b4ce172c75a3f53ae9d91b7",
     win64 = "5d3ff218d7d91eea95f7569bcb5a98f3030f8996d44151279d9772edcff76082",
+  },
+  ["36.1"] = {
+    ["osx-aarch_64"] = "de56d57afe30c5d191b11d24ff93dd4025728d7fb43b773886b2d3613e0bdbb2",
+    ["osx-x86_64"] = "ee2c5496e4af0aa6a224894bc0f7025145260e004d890487d510725ce8b473eb",
+    ["linux-aarch_64"] = "237a68856edf1bd28b6204bddd0596c1cf46d298bc29c620012540b2e44c73e7",
+    ["linux-x86_64"] = "c4bc672d9d49214dc8cafdceadf4df92182d6ca8e3ec65a56b2d7de5602669b4",
+    win64 = "390e515cb456e6a978553bdb57baf087b054885077fd6da7f7ff0160279c07d6",
   },
 }

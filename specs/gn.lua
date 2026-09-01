@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.gn@r0"
+IDENTITY = "envy.gn@r1"
 EXPORTABLE = true
 
 local versions = require("lib.versions")
@@ -48,5 +48,13 @@ hashes = {
     ["mac-amd64"] = "17e27b08c3c34e9d1ebc80faebc73453fa5e9be48c0ba6695b56183c245184bd",
     ["mac-arm64"] = "38804d8ff18dbf3fef6de32fb37f4977a4e18f4bc887c1f6d6084349789d7667",
     ["windows-amd64"] = "4b2c416aeed92aebb11446b00be5d15885b2c6f17f2ca80955d3309c2a62ea3e",
+  },
+  -- 2026-08-31 "Fix EditCommandTest.ShardSubcommand"
+  ["a99d46a9d04c770d6bb87387058e1d7b151758ce"] = {
+    ["linux-amd64"] = "a0ff30ac34026b49a25b75545e58f7bfa239364edd11caf12bdb8bd8a35d629c",
+    ["linux-arm64"] = "f96206c102f15d6c50ef675a9c65279598287740fa986836504615b0fc25f417",
+    ["mac-amd64"] = "477f1b4dbdd15047ab11431b0e2ef6551538d0ad93a6b9ad8332fe5e0b2aefdb",
+    ["mac-arm64"] = "fd8d59ef41bd4f64acd5a21a049f5191b9df95bb25850e71d45787f9c6b62fc5",
+    ["windows-amd64"] = "6fab25d350c84c0a8b58bbcf565f63478c6044a6f507b9715c0815906fbab3bc",
   },
 }

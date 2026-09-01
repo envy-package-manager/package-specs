@@ -1,7 +1,7 @@
 # envy package specs
 
 First-party [envy](https://github.com/envy-package-manager/envy) package specs. The repo
-is one envy bundle: `envy.package-specs@r4`.
+is one envy bundle: `envy.package-specs@r5`.
 
 ## Use
 
@@ -9,14 +9,14 @@ is one envy bundle: `envy.package-specs@r4`.
 -- your envy.lua
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r4",
+    identity = "envy.package-specs@r5",
     source = "git://github.com/envy-package-manager/package-specs",
     ref = "<commit sha>",
   },
 }
 
 PACKAGES = {
-  { spec = "envy.cmake@r0", bundle = "first-party", options = { version = "4.4.0" } },
+  { spec = "envy.cmake@r1", bundle = "first-party", options = { version = "4.4.3" } },
   { spec = "envy.ninja@r0", bundle = "first-party", options = { version = "1.13.2" } },
 }
 ```
@@ -27,16 +27,16 @@ PACKAGES = {
 
 | spec | options | products |
 | --- | --- | --- |
-| `envy.cmake@r0` | `version` | `cmake` `ctest` `cpack` |
+| `envy.cmake@r1` | `version` | `cmake` `ctest` `cpack` |
 | `envy.doctest-cpp@r0` | `version` | `doctest_cpp_dir` `doctest_cpp_h` |
-| `envy.gn@r0` | `ref` | `gn` |
+| `envy.gn@r1` | `ref` | `gn` |
 | `envy.ninja@r0` | `version` | `ninja` |
-| `envy.protobuf@r0` | `version` | `protoc` `protobuf_includes` |
-| `envy.python@r1` | `version` `release` `provide_python` `provide_python3` | `python<maj>.<min>`, plus `python`/`python3` when asked |
-| `envy.ruff@r0` | `version` | `ruff` |
+| `envy.protobuf@r1` | `version` | `protoc` `protobuf_includes` |
+| `envy.python@r2` | `version` `release` `provide_python` `provide_python3` | `python<maj>.<min>`, plus `python`/`python3` when asked |
+| `envy.ruff@r1` | `version` | `ruff` |
 | `envy.swig@r1` | `version` | `swig` `swiglibdir` |
-| `envy.ty@r0` | `version` | `ty` |
-| `envy.uv@r0` | `version` | `uv` `uvx` |
+| `envy.ty@r1` | `version` | `ty` |
+| `envy.uv@r1` | `version` | `uv` `uvx` |
 
 Prebuilt downloads, except SWIG, which builds from source on Unix against a PCRE2 it
 statically links itself, and uses the prebuilt swigwin on Windows. Python comes from
