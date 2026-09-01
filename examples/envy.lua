@@ -11,30 +11,30 @@
 
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r4",
+    identity = "envy.package-specs@r5",
     source = envy.abspath(".."),
   },
 }
 
 PACKAGES = {
-  { spec = "envy.python@r1", bundle = "first-party",
-    options = { version = "3.13.14", release = "20260623", provide_python3 = true } },
+  { spec = "envy.python@r2", bundle = "first-party",
+    options = { version = "3.13.15", release = "20260825", provide_python3 = true } },
 
-  { spec = "envy.uv@r0", bundle = "first-party", options = { version = "0.11.30" } },
+  { spec = "envy.uv@r1", bundle = "first-party", options = { version = "0.12.8" } },
 
-  { spec = "envy.ruff@r0", bundle = "first-party", options = { version = "0.16.0" } },
+  { spec = "envy.ruff@r1", bundle = "first-party", options = { version = "0.16.5" } },
 
-  { spec = "envy.ty@r0", bundle = "first-party", options = { version = "0.0.63" } },
+  { spec = "envy.ty@r1", bundle = "first-party", options = { version = "0.0.77" } },
 
-  { spec = "envy.cmake@r0", bundle = "first-party", options = { version = "4.4.0" } },
+  { spec = "envy.cmake@r1", bundle = "first-party", options = { version = "4.4.3" } },
 
   { spec = "envy.ninja@r0", bundle = "first-party", options = { version = "1.13.2" } },
 
   -- GN is keyed by git revision, not version -- see the README.
-  { spec = "envy.gn@r0", bundle = "first-party",
-    options = { ref = "10d3ab4387f7f4ad0d3fb9d626218a6e09e71d86" } },
+  { spec = "envy.gn@r1", bundle = "first-party",
+    options = { ref = "a99d46a9d04c770d6bb87387058e1d7b151758ce" } },
 
-  { spec = "envy.protobuf@r0", bundle = "first-party", options = { version = "35.1" } },
+  { spec = "envy.protobuf@r1", bundle = "first-party", options = { version = "36.1" } },
 
   { spec = "envy.swig@r1", bundle = "first-party", options = { version = "4.5.0" } },
 
