@@ -10,7 +10,7 @@ is one envy bundle: `envy.package-specs@r5`.
 BUNDLES = {
   ["first-party"] = {
     identity = "envy.package-specs@r5",
-    source = "git://github.com/envy-package-manager/package-specs",
+    source = "https://github.com/envy-package-manager/package-specs.git",
     ref = "<commit sha>",
   },
 }
