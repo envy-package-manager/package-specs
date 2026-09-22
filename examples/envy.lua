@@ -17,11 +17,8 @@ BUNDLES = {
   },
 }
 
--- Source trees a build compiles have to be in the project, not the cache.
 VENDOR_ROOT = "vendor"
 
--- The bundle's own manifest-side helper. One line per library instead of a
--- spelled-out entry each time; it reads the alias above out of ENVY_BUNDLE.
 local gh = envy.loadenv_bundle("first-party", "lib.github")
 
 PACKAGES = {
@@ -54,9 +51,7 @@ PACKAGES = {
     only = { "nanoprintf.h" },
     sha256 = "f0a1f76db77c47df9e8a028dec7d3317fa021b16d10691ea80e5d79b56a13109" }),
 
-  -- A clone at a commit, which needs no hash because the sha is one. Both of
-  -- these land under VENDOR_ROOT; a trailing `vendor = "somewhere/else"` moves
-  -- one, and `vendor = false` leaves it in the cache.
+  -- A clone at a commit, which needs no hash because the sha is one.
   gh.repo("libb64", "libb64/libb64",
           -- envy git-resolve https://github.com/libb64/libb64 v2.0.0.1-7-gce864b1
           "ce864b17ea0e24a91e77c7dd3eb2d1ac4175b3f0"),
