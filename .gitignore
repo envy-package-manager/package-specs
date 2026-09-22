@@ -39,3 +39,7 @@ luac.out
 *.x86_64
 *.hex
 
+
+# envy output from running examples/envy.lua
+examples/bin/
+examples/vendor/

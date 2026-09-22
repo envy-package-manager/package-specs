@@ -4,6 +4,7 @@
 -- runs against local edits. Real projects use a git source and pinned ref --
 -- see the README.
 --
+-- @envy version "0.4.7"
 -- @envy schema "1"
 -- @envy bin "bin"
 -- @envy deploy "true"
@@ -11,10 +12,14 @@
 
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r5",
+    identity = "envy.package-specs@r6",
     source = envy.abspath(".."),
   },
 }
+
+VENDOR_ROOT = "vendor"
+
+local gh = envy.loadenv_bundle("first-party", "lib.github")
 
 PACKAGES = {
   { spec = "envy.python@r2", bundle = "first-party",
@@ -39,4 +44,15 @@ PACKAGES = {
   { spec = "envy.swig@r1", bundle = "first-party", options = { version = "4.5.0" } },
 
   { spec = "envy.doctest-cpp@r0", bundle = "first-party", options = { version = "2.5.3" } },
+
+  -- One asset of a release, unpacked, with the archive's top directory stripped.
+  gh.release("nanoprintf", "charlesnicholson/nanoprintf", {
+    tag = "v0.8.0", asset = "nanoprintf-v0.8.0.zip", strip = 1,
+    only = { "nanoprintf.h" },
+    sha256 = "f0a1f76db77c47df9e8a028dec7d3317fa021b16d10691ea80e5d79b56a13109" }),
+
+  -- A clone at a commit, which needs no hash because the sha is one.
+  gh.repo("libb64", "libb64/libb64",
+          -- envy git-resolve https://github.com/libb64/libb64 v2.0.0.1-7-gce864b1
+          "ce864b17ea0e24a91e77c7dd3eb2d1ac4175b3f0"),
 }
