@@ -1,7 +1,7 @@
 # envy package specs
 
 First-party [envy](https://github.com/envy-package-manager/envy) package specs. The repo
-is one envy bundle: `envy.package-specs@r7`. Needs envy 0.4.8 or newer, for
+is one envy bundle: `envy.package-specs@r8`. Needs envy 0.4.8 or newer, for
 `envy.loadenv_bundle`, `ENVY_BUNDLE`, and a bundled module reading its caller's globals.
 
 ## Use
@@ -10,7 +10,7 @@ is one envy bundle: `envy.package-specs@r7`. Needs envy 0.4.8 or newer, for
 -- your envy.lua
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r7",
+    identity = "envy.package-specs@r8",
     source = "https://github.com/envy-package-manager/package-specs.git",
     ref = "<commit sha>",
   },
@@ -80,14 +80,14 @@ a module it loads from a bundle.
 | `envy.cmake@r1` | `version` | `cmake` `ctest` `cpack` |
 | `envy.doctest-cpp@r0` | `version` | `doctest_cpp_dir` `doctest_cpp_h` |
 | `envy.github@r0` | `repo` `ref` `dest` `tag` `asset` `sha256` `strip` `only` | — |
-| `envy.gn@r1` | `ref` | `gn` |
+| `envy.gn@r2` | `ref` | `gn` |
 | `envy.ninja@r0` | `version` | `ninja` |
-| `envy.protobuf@r1` | `version` | `protoc` `protobuf_includes` |
-| `envy.python@r2` | `version` `release` `provide_python` `provide_python3` | `python<maj>.<min>`, plus `python`/`python3` when asked |
-| `envy.ruff@r1` | `version` | `ruff` |
-| `envy.swig@r1` | `version` | `swig` `swiglibdir` |
-| `envy.ty@r1` | `version` | `ty` |
-| `envy.uv@r1` | `version` | `uv` `uvx` |
+| `envy.protobuf@r2` | `version` | `protoc` `protobuf_includes` |
+| `envy.python@r3` | `version` `release` `provide_python` `provide_python3` | `python<maj>.<min>`, plus `python`/`python3` when asked |
+| `envy.ruff@r2` | `version` | `ruff` |
+| `envy.swig@r2` | `version` | `swig` `swiglibdir` |
+| `envy.ty@r2` | `version` | `ty` |
+| `envy.uv@r2` | `version` | `uv` `uvx` |
 
 Prebuilt downloads, except SWIG, which builds from source on Unix against a PCRE2 it
 statically links itself, and uses the prebuilt swigwin on Windows. Python comes from

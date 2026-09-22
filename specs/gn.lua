@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.gn@r1"
+IDENTITY = "envy.gn@r2"
 EXPORTABLE = true
 
 local versions = require("lib.versions")
@@ -56,5 +56,14 @@ hashes = {
     ["mac-amd64"] = "477f1b4dbdd15047ab11431b0e2ef6551538d0ad93a6b9ad8332fe5e0b2aefdb",
     ["mac-arm64"] = "fd8d59ef41bd4f64acd5a21a049f5191b9df95bb25850e71d45787f9c6b62fc5",
     ["windows-amd64"] = "6fab25d350c84c0a8b58bbcf565f63478c6044a6f507b9715c0815906fbab3bc",
+  },
+  -- 2026-09-17 "When suggestions have a known includer target, don't complain that
+  -- they don't resolve to a single target."
+  ["127dd2a6d582528d6d61c4d838dc17385ef31abd"] = {
+    ["linux-amd64"] = "2529a6e618be13d05b761a1b5b5e2f0c8bd3e5c592d0c8bf16afed12b6314f12",
+    ["linux-arm64"] = "6f82a33452575e7376c99c55c5a5be46816fa0606cde4314d773bdeda5a3be5b",
+    ["mac-amd64"] = "5755124082a2da1cc1197fe4eaf1c784330170196b13220d7578fc79d53fe954",
+    ["mac-arm64"] = "abbf70538595588cb5ee222f65ecf2f9055ecfd1b54475be4d7a02b32631693a",
+    ["windows-amd64"] = "0457c2f6456ed1a110f42ce841dde7c6fde53ff513f71db50c3b08e2d0d8ff47",
   },
 }
