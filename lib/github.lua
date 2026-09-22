@@ -44,7 +44,12 @@ local function entry(name, base, t)
   end
 
   if e.vendor == nil then
-    e.vendor = VENDOR_ROOT and (VENDOR_ROOT .. "/" .. name) or true
+    if not VENDOR_ROOT then
+      error("lib.github: '" .. name .. "' has nowhere to vendor to -- assign " ..
+        "VENDOR_ROOT in the file that loads this helper, or pass " ..
+        "vendor = \"<dir>\" (or false) here")
+    end
+    e.vendor = VENDOR_ROOT .. "/" .. name
   end
 
   e.options = options
