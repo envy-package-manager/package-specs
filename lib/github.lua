@@ -20,17 +20,11 @@ function M.raw_url(repo, ref, path)
   return "https://raw.githubusercontent.com/" .. repo .. "/" .. ref .. "/" .. path
 end
 
----Keys `envy.github@r0` declares. Everything else a builder is handed is an
----entry key instead -- `vendor`, `platforms`, `needed_by` -- so one table per
----call carries both halves and nothing has to be restated.
 local SPEC_OPTIONS = {
   repo = true, ref = true, dest = true,
   tag = true, asset = true, sha256 = true, strip = true, only = true,
 }
 
----The calling manifest's own alias for this bundle, which envy seeds into a
----module it loads out of one. An entry these builders return parses exactly like
----a literal one, so its `bundle` has to name an alias of the file that wrote it.
 local function bundle_alias()
   local alias = ENVY_BUNDLE and ENVY_BUNDLE.alias
   return alias or error("lib.github: the entry builders are manifest scope -- reach " ..
@@ -49,11 +43,6 @@ local function entry(name, base, t)
     if SPEC_OPTIONS[key] then options[key] = value else e[key] = value end
   end
 
-  -- Vendored to `<VENDOR_ROOT>/<name>` unless the entry named a directory itself
-  -- or opted out with `vendor = false`. VENDOR_ROOT is read here rather than
-  -- bound once, so it resolves when the builder runs and a manifest may set it
-  -- either side of the `loadenv_bundle` call. With none set, `true` hands the
-  -- complaint to envy, which words it better than this file could.
   if e.vendor == nil then
     e.vendor = VENDOR_ROOT and (VENDOR_ROOT .. "/" .. name) or true
   end
