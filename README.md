@@ -1,8 +1,8 @@
 # envy package specs
 
 First-party [envy](https://github.com/envy-package-manager/envy) package specs. The repo
-is one envy bundle: `envy.package-specs@r6`. Needs envy 0.4.7 or newer, for
-`envy.loadenv_bundle` and `ENVY_BUNDLE`.
+is one envy bundle: `envy.package-specs@r7`. Needs envy 0.4.8 or newer, for
+`envy.loadenv_bundle`, `ENVY_BUNDLE`, and a bundled module reading its caller's globals.
 
 ## Use
 
@@ -10,7 +10,7 @@ is one envy bundle: `envy.package-specs@r6`. Needs envy 0.4.7 or newer, for
 -- your envy.lua
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r6",
+    identity = "envy.package-specs@r7",
     source = "https://github.com/envy-package-manager/package-specs.git",
     ref = "<commit sha>",
   },
@@ -52,9 +52,18 @@ PACKAGES = {
 Each entry vendors to `<VENDOR_ROOT>/<name>` on its own, with a clone one level down
 inside that (`vendor/libb64/libb64`), which is the shape a submodule of the same name
 had. Per entry, `vendor = "<dir>"` puts it somewhere else and `vendor = false` leaves it
-in the cache. `VENDOR_ROOT` is read when a builder runs, not when the helper loads, so it
-can be set either side of the `envy.loadenv_bundle` call — but only by the root manifest,
-which is envy's rule rather than this helper's.
+in the cache. With neither a `VENDOR_ROOT` in reach nor a `vendor` key, the builder says
+so and names the entry, rather than leaving envy a name to derive: every entry here shares
+the one `envy.github@r0` identity, so a derived name would collide with its siblings and
+escalate to an options hash.
+
+`VENDOR_ROOT` is read when a builder runs, not when the helper loads, so it can be set
+either side of the `envy.loadenv_bundle` call, and it is read from whichever file reached
+the helper — envy hands a bundled module the globals of its caller, so these builders work
+the same in an imported fragment as in a root manifest. envy reads the global itself from
+the root manifest alone, and refuses a fragment that sets one the root has not spliced in
+(`VENDOR_ROOT = envy.import("sub").VENDOR_ROOT`). Vendor paths anchor on the root project
+either way.
 
 The trailing table holds both halves of an entry: keys `envy.github@r0` declares
 (`tag`, `asset`, `sha256`, `strip`, `only`, `dest`) become its options, and anything else

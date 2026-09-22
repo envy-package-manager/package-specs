@@ -4,7 +4,7 @@
 -- runs against local edits. Real projects use a git source and pinned ref --
 -- see the README.
 --
--- @envy version "0.4.7"
+-- @envy version "0.4.8"
 -- @envy schema "1"
 -- @envy bin "bin"
 -- @envy deploy "true"
@@ -12,7 +12,7 @@
 
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r6",
+    identity = "envy.package-specs@r7",
     source = envy.abspath(".."),
   },
 }
