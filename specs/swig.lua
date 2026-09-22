@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.swig@r1"
+IDENTITY = "envy.swig@r2"
 EXPORTABLE = true
 
 local platform = require("lib.platform")
@@ -108,6 +108,10 @@ end
 -- SWIG publishes no checksums; hashes were computed from the downloads.
 -- `source` is the tarball built on Unix; `windows` is the prebuilt swigwin zip.
 hashes = {
+  ["4.5.1"] = {
+    source = "7fec50b27deddab5455a9633780b6341eddfb96215a7619e93a76eb27178f653",
+    windows = "6a8662c063ba4d1e72beaecef24da4af3d631d73ffdde958fb42aa50fdefb962",
+  },
   ["4.5.0"] = {
     source = "22ae0e887f8cca8031a325c67d005207653200b40e71edb3f88780e28e47d0ff",
     windows = "d08a5b5cfd3f285ccc13b9ee0667f6e05d07433aaae89e8ae24850e05e62e04e",
@@ -122,6 +126,6 @@ hashes = {
 -- Pinned here rather than exposed as an option: this is a private build-time
 -- dependency of the Unix build, not something a manifest picks.
 pcre2 = {
-  version = "10.47",
-  sha256 = "c08ae2388ef333e8403e670ad70c0a11f1eed021fd88308d7e02f596fcd9dc16",
+  version = "10.48",
+  sha256 = "ebcc25aadf2a51fa1fefa9b8bc9e7a79b3dae86870a0f1152a22e42befd46888",
 }

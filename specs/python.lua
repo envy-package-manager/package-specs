@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.python@r2"
+IDENTITY = "envy.python@r3"
 EXPORTABLE = true
 
 local github = require("lib.github")
@@ -115,5 +115,29 @@ hashes = {
     "7f4aeabc079f415eaa6f299fcee1ee8d609e38bbb94b1e2bebe8026b80f68d98",
     ["x86_64-pc-windows-msvc"] =
     "f042d41ce45bbec95a608f522861707133afabc372758a09cfe5895a1f85d426",
+  },
+  ["3.13.15+20260901"] = {
+    ["aarch64-apple-darwin"] =
+    "46685a8e6dbad3e94534e0d73f483d08149867707200aa39e99690b76002053f",
+    ["x86_64-apple-darwin"] =
+    "9ed4c06a2f276f523638b3c9a420fad932dcb1e8f0c740da47d7701281dc065a",
+    ["aarch64-unknown-linux-gnu"] =
+    "4e3896e4eb9313112d0c5256602f1ae395b499d64c6dccc9770eb12932df1fa2",
+    ["x86_64_v3-unknown-linux-gnu"] =
+    "1a358d3a42bec27960c24f3a6f4178af00610f152c57ae7a590266908ba5b792",
+    ["x86_64-pc-windows-msvc"] =
+    "b8630abcc99a26f3c3ed4022664d9c741fc14a6b8fbfc88a489b25f8de67f85e",
+  },
+  ["3.14.7+20260901"] = {
+    ["aarch64-apple-darwin"] =
+    "185fa676e14b648bd736ce7f20f9b11e201131b3216ec5a39d4ecd8ab8a71112",
+    ["x86_64-apple-darwin"] =
+    "8e4dacf2d3e6682ad2947b7d96a062f721452e2d1ccbbfd762d2bfe985076cae",
+    ["aarch64-unknown-linux-gnu"] =
+    "46d34f9dbcc7699110d4b74a83103e4056ad0045a62d5cfb6abbad278f022d01",
+    ["x86_64_v3-unknown-linux-gnu"] =
+    "6f85ed6030d6a39b7af60f32ad0819700e394482994b1ef312602d688d604c1a",
+    ["x86_64-pc-windows-msvc"] =
+    "5363ec4aab59c24417f9877217aae95ca17f9ae6eb99c3bbfb25e4a76dcadafe",
   },
 }
