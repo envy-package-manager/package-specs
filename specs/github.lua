@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.github@r0"
+IDENTITY = "envy.github@r1"
 EXPORTABLE = true
 
 local github = require("lib.github")
@@ -18,6 +18,7 @@ OPTIONS = function(opts)
     sha256 = { type = "string" },
     strip = { type = "int" },
     only = { type = "list" },
+    archives = { type = "list" },
   })
 
   if opts.asset then
@@ -45,5 +46,6 @@ end
 
 STAGE = function(fetch_dir, stage_dir, tmp_dir, opts)
   if not opts.asset then return end
-  envy.extract_all(fetch_dir, stage_dir, { strip = opts.strip, only = opts.only })
+  envy.extract_all(fetch_dir, stage_dir, { strip = opts.strip, only = opts.only,
+                                            archives = opts.archives })
 end

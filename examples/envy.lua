@@ -4,7 +4,7 @@
 -- runs against local edits. Real projects use a git source and pinned ref --
 -- see the README.
 --
--- @envy version "0.4.8"
+-- @envy version "0.4.9"
 -- @envy schema "1"
 -- @envy bin "bin"
 -- @envy deploy "true"
@@ -12,7 +12,7 @@
 
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r8",
+    identity = "envy.package-specs@r9",
     source = envy.abspath(".."),
   },
 }
@@ -50,6 +50,12 @@ PACKAGES = {
     tag = "v0.8.0", asset = "nanoprintf-v0.8.0.zip", strip = 1,
     only = { "nanoprintf.h" },
     sha256 = "f0a1f76db77c47df9e8a028dec7d3317fa021b16d10691ea80e5d79b56a13109" }),
+
+  -- A CMSIS-Pack is a zip that envy would not know by its name without `archives`.
+  gh.release("CMSIS-DSP", "ARM-software/CMSIS-DSP", {
+    tag = "v1.15.0", asset = "ARM.CMSIS-DSP.1.15.0.pack", archives = { "*.pack" },
+    only = { "Include/**", "PrivateInclude/**", "Source/**" },
+    sha256 = "4e9719d7df4036661128aa8a6f580f4ac319137624b4f304a0f0d72b4d9eeb5a" }),
 
   -- A clone at a commit, which needs no hash because the sha is one.
   gh.repo("libb64", "libb64/libb64",

@@ -1,4 +1,4 @@
--- GitHub download URLs, and the manifest-side builders for `envy.github@r0`.
+-- GitHub download URLs, and the manifest-side builders for `envy.github@r1`.
 
 local M = {}
 
@@ -22,7 +22,7 @@ end
 
 local SPEC_OPTIONS = {
   repo = true, ref = true, dest = true,
-  tag = true, asset = true, sha256 = true, strip = true, only = true,
+  tag = true, asset = true, sha256 = true, strip = true, only = true, archives = true,
 }
 
 local function bundle_alias()
@@ -38,7 +38,7 @@ local function entry(name, base, t)
   local options = {}
   for key, value in pairs(base) do options[key] = value end
 
-  local e = { spec = "envy.github@r0", bundle = bundle_alias() }
+  local e = { spec = "envy.github@r1", bundle = bundle_alias() }
   for key, value in pairs(t or {}) do
     if SPEC_OPTIONS[key] then options[key] = value else e[key] = value end
   end
@@ -74,10 +74,11 @@ function M.repo(name, repo, ref, t)
 end
 
 ---One asset of a release, unpacked, as a `PACKAGES` entry. `strip` and `only`
----narrow what comes out of the archive.
+---narrow what comes out of the archive; `archives` unpacks an asset whose name
+---envy does not know for an archive (`{ "*.pack" }`).
 ---@param name string leaf name
 ---@param repo string "owner/name"
----@param t table `tag`, `asset`, `sha256`, optional `strip`/`only`, entry keys
+---@param t table `tag`, `asset`, `sha256`, optional `strip`/`only`/`archives`, entry keys
 ---@return table entry
 function M.release(name, repo, t)
   return entry(name, { repo = repo }, t)
