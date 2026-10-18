@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.gn@r2"
+IDENTITY = "envy.gn@r3"
 EXPORTABLE = true
 
 local versions = require("lib.versions")
@@ -65,5 +65,13 @@ hashes = {
     ["mac-amd64"] = "5755124082a2da1cc1197fe4eaf1c784330170196b13220d7578fc79d53fe954",
     ["mac-arm64"] = "abbf70538595588cb5ee222f65ecf2f9055ecfd1b54475be4d7a02b32631693a",
     ["windows-amd64"] = "0457c2f6456ed1a110f42ce841dde7c6fde53ff513f71db50c3b08e2d0d8ff47",
+  },
+  -- 2026-10-15 "Add check_includes_strict_exceptions configuration to .gn"
+  ["f90c3d9df882a9da4a66457f47dd3d99b3df3dd5"] = {
+    ["linux-amd64"] = "b2307ab5611fef6d854912fb00c4cb013dc43d352452185b6138aa077f2ef4e6",
+    ["linux-arm64"] = "b1035d577b931188d31dca4252585f57e45dca08363a42acf0ca7792be329073",
+    ["mac-amd64"] = "a647a1b469bd0f635f30f46996ec315a3bc9ba7f9ec0138ce18fcdf7b97a4c17",
+    ["mac-arm64"] = "96cc060cc1334ac58c33e5c8c7acf20640b47922f7cd3ff3ccd5f8a7c91049ab",
+    ["windows-amd64"] = "549fa166dff1c867e48d245c982806641103603882124cb37f5a90a571cdc806",
   },
 }

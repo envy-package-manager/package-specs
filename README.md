@@ -1,7 +1,7 @@
 # envy package specs
 
 First-party [envy](https://github.com/envy-package-manager/envy) package specs. The repo
-is one envy bundle: `envy.package-specs@r9`. Needs envy 0.4.9 or newer, for
+is one envy bundle: `envy.package-specs@r10`. Needs envy 0.4.9 or newer, for
 `envy.loadenv_bundle`, `ENVY_BUNDLE`, a bundled module reading its caller's globals, and
 `envy.extract_all`'s `archives`.
 
@@ -11,14 +11,14 @@ is one envy bundle: `envy.package-specs@r9`. Needs envy 0.4.9 or newer, for
 -- your envy.lua
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r9",
+    identity = "envy.package-specs@r10",
     source = "https://github.com/envy-package-manager/package-specs.git",
     ref = "<commit sha>",
   },
 }
 
 PACKAGES = {
-  { spec = "envy.cmake@r1", bundle = "first-party", options = { version = "4.4.3" } },
+  { spec = "envy.cmake@r2", bundle = "first-party", options = { version = "4.4.4" } },
   { spec = "envy.ninja@r0", bundle = "first-party", options = { version = "1.13.2" } },
 }
 ```
@@ -79,17 +79,17 @@ a module it loads from a bundle.
 
 | spec | options | products |
 | --- | --- | --- |
-| `envy.cmake@r1` | `version` | `cmake` `ctest` `cpack` |
+| `envy.cmake@r2` | `version` | `cmake` `ctest` `cpack` |
 | `envy.doctest-cpp@r0` | `version` | `doctest_cpp_dir` `doctest_cpp_h` |
 | `envy.github@r1` | `repo` `ref` `dest` `tag` `asset` `sha256` `strip` `only` `archives` | — |
-| `envy.gn@r2` | `ref` | `gn` |
+| `envy.gn@r3` | `ref` | `gn` |
 | `envy.ninja@r0` | `version` | `ninja` |
 | `envy.protobuf@r2` | `version` | `protoc` `protobuf_includes` |
-| `envy.python@r3` | `version` `release` `provide_python` `provide_python3` | `python<maj>.<min>`, plus `python`/`python3` when asked |
-| `envy.ruff@r2` | `version` | `ruff` |
-| `envy.swig@r2` | `version` | `swig` `swiglibdir` |
-| `envy.ty@r2` | `version` | `ty` |
-| `envy.uv@r2` | `version` | `uv` `uvx` |
+| `envy.python@r4` | `version` `release` `provide_python` `provide_python3` | `python<maj>.<min>`, plus `python`/`python3` when asked |
+| `envy.ruff@r3` | `version` | `ruff` |
+| `envy.swig@r3` | `version` | `swig` `swiglibdir` |
+| `envy.ty@r3` | `version` | `ty` |
+| `envy.uv@r3` | `version` | `uv` `uvx` |
 
 Prebuilt downloads, except SWIG, which builds from source on Unix against a PCRE2 it
 statically links itself, and uses the prebuilt swigwin on Windows. Python comes from

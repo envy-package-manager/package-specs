@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.python@r3"
+IDENTITY = "envy.python@r4"
 EXPORTABLE = true
 
 local github = require("lib.github")
@@ -139,5 +139,41 @@ hashes = {
     "6f85ed6030d6a39b7af60f32ad0819700e394482994b1ef312602d688d604c1a",
     ["x86_64-pc-windows-msvc"] =
     "5363ec4aab59c24417f9877217aae95ca17f9ae6eb99c3bbfb25e4a76dcadafe",
+  },
+  ["3.13.16+20261013"] = {
+    ["aarch64-apple-darwin"] =
+    "3497822d8bf4884bc79258f62668f985654d03d40ec74da4ca9ae7a5667c4362",
+    ["x86_64-apple-darwin"] =
+    "2a36086baac5e4584b59d4638df04a1c348244b276829125f1aa038ab97a1ce6",
+    ["aarch64-unknown-linux-gnu"] =
+    "e9dce338e30a508f1549081d314953417858f474c42e54919131ef3986398f79",
+    ["x86_64_v3-unknown-linux-gnu"] =
+    "3d621f22b88b95211ebde067b65e597bc5988e2e4f703cbb611618e91b386582",
+    ["x86_64-pc-windows-msvc"] =
+    "784db2d7087fbecf1e0b807f908f2846de039e107e4195736039c8a217884b46",
+  },
+  ["3.14.8+20261013"] = {
+    ["aarch64-apple-darwin"] =
+    "5806ddb9d95d73796c87e1aeb45bf7ec984d08ae9eb94f9020436052b32ce498",
+    ["x86_64-apple-darwin"] =
+    "193223f1380c93f62dda1d2b1f08ac46c0de5a57e51ab9946598d5d88e10742b",
+    ["aarch64-unknown-linux-gnu"] =
+    "45fe97bf0d07d7cef3fee5f1cab6e4a7d7e99a22e0d5f842e005ef61a9656c73",
+    ["x86_64_v3-unknown-linux-gnu"] =
+    "b4aff91f0df1b4cb302d5e889400e74b5daf576c1ef985e012be8eed4171a34a",
+    ["x86_64-pc-windows-msvc"] =
+    "2ce5a489c8a5960b24e3d8f1227639300963a13b25588970ca164f8a719deac3",
+  },
+  ["3.15.0+20261013"] = {
+    ["aarch64-apple-darwin"] =
+    "08b94dbdc1d64613ddc832c6db205d8ae76aa183ff1bc767501e7780841a8484",
+    ["x86_64-apple-darwin"] =
+    "ebd19979a55f81883b345ffedc4de90ef2e0b01397a447dd5b03a875ee23fa04",
+    ["aarch64-unknown-linux-gnu"] =
+    "0d471dde53ea01fc68ac72b3dc698521a4c9e705bfa7e71bde1eccf4ed896585",
+    ["x86_64_v3-unknown-linux-gnu"] =
+    "6e08e7057ba1d6798a85311566a9a2d8c766788b92c59502bdc8b8910ad4c718",
+    ["x86_64-pc-windows-msvc"] =
+    "6facc31c890633397cd1701a6e366be053d3d5053abbff2d219e2df96e066a44",
   },
 }
