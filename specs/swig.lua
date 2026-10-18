@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.swig@r2"
+IDENTITY = "envy.swig@r3"
 EXPORTABLE = true
 
 local platform = require("lib.platform")
@@ -126,6 +126,6 @@ hashes = {
 -- Pinned here rather than exposed as an option: this is a private build-time
 -- dependency of the Unix build, not something a manifest picks.
 pcre2 = {
-  version = "10.48",
-  sha256 = "ebcc25aadf2a51fa1fefa9b8bc9e7a79b3dae86870a0f1152a22e42befd46888",
+  version = "10.49",
+  sha256 = "929f0b20e62879252a15886b06c89f1edef61a363cbd5826fb041080a5e557ae",
 }

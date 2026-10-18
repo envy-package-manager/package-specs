@@ -12,7 +12,7 @@
 
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r9",
+    identity = "envy.package-specs@r10",
     source = envy.abspath(".."),
   },
 }
@@ -22,26 +22,26 @@ VENDOR_ROOT = "vendor"
 local gh = envy.loadenv_bundle("first-party", "lib.github")
 
 PACKAGES = {
-  { spec = "envy.python@r3", bundle = "first-party",
-    options = { version = "3.13.15", release = "20260901", provide_python3 = true } },
+  { spec = "envy.python@r4", bundle = "first-party",
+    options = { version = "3.13.16", release = "20261013", provide_python3 = true } },
 
-  { spec = "envy.uv@r2", bundle = "first-party", options = { version = "0.12.17" } },
+  { spec = "envy.uv@r3", bundle = "first-party", options = { version = "0.13.1" } },
 
-  { spec = "envy.ruff@r2", bundle = "first-party", options = { version = "0.16.8" } },
+  { spec = "envy.ruff@r3", bundle = "first-party", options = { version = "0.17.1" } },
 
-  { spec = "envy.ty@r2", bundle = "first-party", options = { version = "0.0.83" } },
+  { spec = "envy.ty@r3", bundle = "first-party", options = { version = "0.0.89" } },
 
-  { spec = "envy.cmake@r1", bundle = "first-party", options = { version = "4.4.3" } },
+  { spec = "envy.cmake@r2", bundle = "first-party", options = { version = "4.4.4" } },
 
   { spec = "envy.ninja@r0", bundle = "first-party", options = { version = "1.13.2" } },
 
   -- GN is keyed by git revision, not version -- see the README.
-  { spec = "envy.gn@r2", bundle = "first-party",
-    options = { ref = "127dd2a6d582528d6d61c4d838dc17385ef31abd" } },
+  { spec = "envy.gn@r3", bundle = "first-party",
+    options = { ref = "f90c3d9df882a9da4a66457f47dd3d99b3df3dd5" } },
 
   { spec = "envy.protobuf@r2", bundle = "first-party", options = { version = "36.2" } },
 
-  { spec = "envy.swig@r2", bundle = "first-party", options = { version = "4.5.1" } },
+  { spec = "envy.swig@r3", bundle = "first-party", options = { version = "4.5.1" } },
 
   { spec = "envy.doctest-cpp@r0", bundle = "first-party", options = { version = "2.5.3" } },
 
