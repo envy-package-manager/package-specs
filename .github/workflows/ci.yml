@@ -1,0 +1,97 @@
+name: ci
+
+# Installs every version of every spec that envy-bundle.lua names, on every
+# platform the specs record hashes for. Only this checkout's revisions: an older
+# revision that broke gets fixed by cutting a new one, not by testing the old.
+#
+# The nightly run is the point. Upstream can re-upload, move or delete an
+# artifact without a commit here, and nothing but a fresh download notices.
+
+on:
+  pull_request:
+  schedule:
+    - cron: "17 7 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      specs: ${{ steps.specs.outputs.specs }}
+    steps:
+      - uses: actions/checkout@v7
+      - run: .github/ci/setup-envy.sh
+      - id: specs
+        run: |
+          specs=$(envy lua .github/ci/cases.lua)
+          echo "specs=$specs" >> "$GITHUB_OUTPUT"
+
+  specs:
+    needs: plan
+    name: ${{ matrix.spec }} (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: &runners
+          - ubuntu-latest
+          - ubuntu-24.04-arm
+          - macos-latest
+          - macos-15-intel
+          - windows-latest
+        spec: ${{ fromJSON(needs.plan.outputs.specs) }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+      - run: .github/ci/setup-envy.sh
+      - name: Install every version
+        env:
+          CASES_SPEC: ${{ matrix.spec }}
+        run: |
+          export CASES_OUT="$RUNNER_TEMP/cases"
+          mkdir -p "$CASES_OUT"
+          envy lua .github/ci/cases.lua
+          .github/ci/install.sh "$CASES_OUT"/*.lua
+
+  # envy.github pins nothing for the specs job to enumerate; the sample manifest
+  # holds an entry of each of its forms.
+  examples:
+    name: examples (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: *runners
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+      - run: .github/ci/setup-envy.sh
+      - run: .github/ci/install.sh examples/envy.lua
+
+  # The one check branch protection requires, so jobs come and go by editing
+  # `needs` here and nothing on GitHub's side. always(), so a cancelled or
+  # skipped dependency reports red instead of skipped, which branch protection
+  # counts as satisfied.
+  all-checks-pass:
+    needs: [plan, specs, examples]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - if: >-
+          contains(needs.*.result, 'failure') ||
+          contains(needs.*.result, 'cancelled') ||
+          contains(needs.*.result, 'skipped')
+        run: exit 1
