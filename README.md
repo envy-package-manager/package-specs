@@ -141,3 +141,13 @@ release form insists on a `sha256` that envy itself would let you omit.)
 Conventions: `version` never carries a leading `v` (specs add it to the tag), platform
 keys are upstream's own artifact naming, and products are named after the binary. GN's
 hash table is keyed by git revision instead, one entry per `ref`.
+
+## CI
+
+`.github/workflows/ci.yml` installs every version of every spec `envy-bundle.lua` names,
+from an empty cache, on each pull request and nightly: an upstream artifact can move or
+vanish without a commit here. It reads the versions out of the specs, so a new one is
+covered as soon as its hashes land. A spec whose `OPTIONS` does not constrain exactly one
+option to `choices` has to say how to enumerate it in `.github/ci/cases.lua`; CI fails
+until it does. Only the checked-out revisions are tested, since a broken one is fixed by
+cutting the next.
