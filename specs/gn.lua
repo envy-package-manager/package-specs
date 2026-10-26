@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.gn@r3"
+IDENTITY = "envy.gn@r4"
 EXPORTABLE = true
 
 local versions = require("lib.versions")
@@ -73,5 +73,13 @@ hashes = {
     ["mac-amd64"] = "a647a1b469bd0f635f30f46996ec315a3bc9ba7f9ec0138ce18fcdf7b97a4c17",
     ["mac-arm64"] = "96cc060cc1334ac58c33e5c8c7acf20640b47922f7cd3ff3ccd5f8a7c91049ab",
     ["windows-amd64"] = "549fa166dff1c867e48d245c982806641103603882124cb37f5a90a571cdc806",
+  },
+  -- 2026-10-22 "Improve StringOutputBuffer to act more like an o(string)stream"
+  ["938087829fcbcc8fd87835ee301dd522c7637685"] = {
+    ["linux-amd64"] = "2d755b51f98e70a8d13cad6ec3b4c3b03fa5df0e657fcd0c444dedb4f2276de8",
+    ["linux-arm64"] = "0a23741570936915edec2994d05ed9f4302e4609f3aba6975b1d97ebf54faccb",
+    ["mac-amd64"] = "ff9d6afcadf79621840f2fb1a4d6dd62a1bffb5c677cfa0a4416abf2528947a3",
+    ["mac-arm64"] = "a61b46e5e40a8c7b152c7509defb4194153a1ffa51c257732f892a2968752ce9",
+    ["windows-amd64"] = "819f01138f8c4530b71f9316c7d16dd9e1f8cc5d72aa08a6e19980f05c857879",
   },
 }

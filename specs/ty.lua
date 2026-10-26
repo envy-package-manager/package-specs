@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.ty@r3"
+IDENTITY = "envy.ty@r4"
 EXPORTABLE = true
 
 local hashes -- version -> triple -> sha256, populated at the bottom of this file
@@ -65,5 +65,17 @@ hashes = {
     "2618c34c21096a44a797512f2533dea52d28e95a0287833719805db72874b8b1",
     ["x86_64-pc-windows-msvc"] =
     "59232824e08b30b5aed11bab9a2d1296eab75c736938f6b8884e4597700a0fb2",
+  },
+  ["0.0.92"] = {
+    ["aarch64-apple-darwin"] =
+    "8db29940906b7c9627d43f2dd458dbe11a975577ec7748a63a3c83bc84c9f957",
+    ["x86_64-apple-darwin"] =
+    "a8fbaf3bb604c3ce82d3a654fe5d75c5c01d9b53f36e90d50eab9456dc83fa2d",
+    ["aarch64-unknown-linux-musl"] =
+    "ad762b522fbb78f4340f186342761f71ae9f33fd250931106ef81a7e1442f71e",
+    ["x86_64-unknown-linux-musl"] =
+    "dc5415e1c0bf1f6f7093f04cba7dda201b25fe41bad091c0de63764264dac98c",
+    ["x86_64-pc-windows-msvc"] =
+    "6cc04731c49d9c020242ebfd453aba877b56f98871184f9d6fa7e9554dab8294",
   },
 }

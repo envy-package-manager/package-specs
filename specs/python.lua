@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.python@r4"
+IDENTITY = "envy.python@r5"
 EXPORTABLE = true
 
 local github = require("lib.github")
@@ -175,5 +175,41 @@ hashes = {
     "6e08e7057ba1d6798a85311566a9a2d8c766788b92c59502bdc8b8910ad4c718",
     ["x86_64-pc-windows-msvc"] =
     "6facc31c890633397cd1701a6e366be053d3d5053abbff2d219e2df96e066a44",
+  },
+  ["3.13.18+20261026"] = {
+    ["aarch64-apple-darwin"] =
+    "5706f1fdf82f7ea10b56a9b9cbadfa5f372010568a9794f19e0af4c48d975f34",
+    ["x86_64-apple-darwin"] =
+    "3b07eb16ae3d4f15e71ba5173f5ebf98156a4fbb1fc62a531b680efadff28feb",
+    ["aarch64-unknown-linux-gnu"] =
+    "069e9ae72f35f8ac743e1dad224417b07a3728971bc8333fe08b78e4c24bee12",
+    ["x86_64_v3-unknown-linux-gnu"] =
+    "8309cbd90fc1741c13d659f91b0dac1fea2db5ed747c6b368dbd21fd9923f7c6",
+    ["x86_64-pc-windows-msvc"] =
+    "cc35b06b48ae8f854a49c7be3b0cbebf6f822d965ffe0662ccff4713d20f3157",
+  },
+  ["3.14.10+20261026"] = {
+    ["aarch64-apple-darwin"] =
+    "137db511241f7693ddc57586af1744c7b6375982ab4c31c4a82d10115657d462",
+    ["x86_64-apple-darwin"] =
+    "efce6e258263296b5a5476ab982b721590c7d25eac7636785a1a46d9bf1cf46b",
+    ["aarch64-unknown-linux-gnu"] =
+    "2c2b62b6e02a1717b408c30d49a8bf293b280b2b4a22bb948f9b85ecc1f5ce54",
+    ["x86_64_v3-unknown-linux-gnu"] =
+    "33baa6ac5bf6b532d89ae77e73dbc9ad20d50d88cce546b90441e4349cdce2b8",
+    ["x86_64-pc-windows-msvc"] =
+    "7a828feea84763362f5e56031a12eee5d2697196ccf987b21ccce5ec9ad4a00f",
+  },
+  ["3.15.2+20261026"] = {
+    ["aarch64-apple-darwin"] =
+    "17a41099bba8c18c45c527580014e75dc7a77300f619d7f5cdfecc57aca06f39",
+    ["x86_64-apple-darwin"] =
+    "f3ded442ab28d88ef625b54e936a5c45c9a444763d3f9f02c8653e11f0d99688",
+    ["aarch64-unknown-linux-gnu"] =
+    "b3fc351d2271f6c0b3c6d2b423043771dfcb5267053512b8aebba195dad110e9",
+    ["x86_64_v3-unknown-linux-gnu"] =
+    "03824b4b32d5c14c422b641d41540d4bf32621bb11fbb72286ff7574db066ed6",
+    ["x86_64-pc-windows-msvc"] =
+    "5fc81405bbe4d0372302970372cde44fa0d755a0148a7d291168fba3e605a2f5",
   },
 }
