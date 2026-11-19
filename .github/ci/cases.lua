@@ -121,7 +121,19 @@ local function lua_table(t)
   return "{ " .. table.concat(fields, ", ") .. " }"
 end
 
-local function manifest(bundle, envy_version, identity, options)
+-- Specs that resolve only beside another spec of this bundle: each case brings
+-- that spec's newest case along.
+local COMPANIONS = {
+  -- Runs on whichever `node` product the manifest provides.
+  ["envy.yarn"] = "envy.node",
+}
+
+local function entry(identity, options)
+  return "  { spec = " .. string.format("%q", identity) .. ', bundle = "ci", options = ' ..
+      lua_table(options) .. " },"
+end
+
+local function manifest(bundle, envy_version, entries)
   return table.concat({
     '-- @envy version "' .. envy_version .. '"',
     '-- @envy schema "1"',
@@ -134,8 +146,7 @@ local function manifest(bundle, envy_version, identity, options)
     "}",
     "",
     "PACKAGES = {",
-    "  { spec = " .. string.format("%q", identity) .. ', bundle = "ci", options = ' ..
-        lua_table(options) .. " },",
+    table.concat(entries, "\n"),
     "}",
     "",
   }, "\n")
@@ -163,8 +174,20 @@ local out = os.getenv("CASES_OUT") or error("CASES_OUT is not set", 0)
 -- The examples pin the oldest envy this bundle supports, so the cases do too.
 local envy_version = read("examples/envy.lua"):match('%-%-%s*@envy%s+version%s+"([^"]+)"')
 
+local companion
+local companion_name = COMPANIONS[wanted:match("^(.-)@")]
+if companion_name then
+  for identity, spec_path in pairs(bundle.SPECS) do
+    if identity:match("^(.-)@") == companion_name then
+      local cases = cases_of(identity, spec_path)
+      companion = entry(identity, cases[#cases].options)
+    end
+  end
+  if not companion then error("envy-bundle.lua has no spec " .. companion_name, 0) end
+end
+
 for _, case in ipairs(cases_of(wanted, path)) do
   local f = assert(io.open(envy.path.join(out, case.label .. ".lua"), "wb"))
-  f:write(manifest(bundle.BUNDLE, envy_version, wanted, case.options))
+  f:write(manifest(bundle.BUNDLE, envy_version, { entry(wanted, case.options), companion }))
   f:close()
 end

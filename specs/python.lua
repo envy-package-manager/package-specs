@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.python@r5"
+IDENTITY = "envy.python@r6"
 EXPORTABLE = true
 
 local github = require("lib.github")
@@ -211,5 +211,41 @@ hashes = {
     "03824b4b32d5c14c422b641d41540d4bf32621bb11fbb72286ff7574db066ed6",
     ["x86_64-pc-windows-msvc"] =
     "5fc81405bbe4d0372302970372cde44fa0d755a0148a7d291168fba3e605a2f5",
+  },
+  ["3.13.18+20261110"] = {
+    ["aarch64-apple-darwin"] =
+    "11c316dfa24e1184e91de3c1434ed1d3e986c30b2d7a0273257067efe611a677",
+    ["x86_64-apple-darwin"] =
+    "a942bf40b7c1219bd05f57b5d449eff5c79fb5cadb781f3d08a8fa27a170e436",
+    ["aarch64-unknown-linux-gnu"] =
+    "160b0ca941266cd8f0e0dda7fd355ce1089df50d15853ea8cd99f4599067db39",
+    ["x86_64_v3-unknown-linux-gnu"] =
+    "a90849ebf4588dcc6805b731871355d16ffb42c458c4d3ae930640389ac867a1",
+    ["x86_64-pc-windows-msvc"] =
+    "1ec789d7dd44b9551673b6abea4194ae0b0a77a66a18a96faf2aca3f0ce61757",
+  },
+  ["3.14.10+20261110"] = {
+    ["aarch64-apple-darwin"] =
+    "d14291578918474f3b02d2530c90dcba30efa7ccc0e3b01ae1bfeebbbbcd9f6a",
+    ["x86_64-apple-darwin"] =
+    "d03fefb70eca64498bf045da3e7b81c531dfa94524ba25fda8ccca5c8d536d04",
+    ["aarch64-unknown-linux-gnu"] =
+    "7e6b0d554a93c15186993ee0254c54a590a1dcc8aaf0564f3ada3d76a1d331da",
+    ["x86_64_v3-unknown-linux-gnu"] =
+    "85362da10ec861de23b66ead5c2ca67d235a3f52f3208481a131cab0279d9fd9",
+    ["x86_64-pc-windows-msvc"] =
+    "362018de5d1db9567072c6672a211d9c7e024cf8c42fc11183079c773dd0956a",
+  },
+  ["3.15.2+20261110"] = {
+    ["aarch64-apple-darwin"] =
+    "53af18af034de253bac9b08d95c861d5b08a6d46a87ec5c9d8b34577fe48b4ad",
+    ["x86_64-apple-darwin"] =
+    "15807b2f364aa77636ff87760ab60e12f3fb547022232d54d0334bbf9b3eb2d3",
+    ["aarch64-unknown-linux-gnu"] =
+    "56246cc19968bbfc32a92a2c7887fa2fd4ba1917976dccb2d0ee3e43468b1b3d",
+    ["x86_64_v3-unknown-linux-gnu"] =
+    "1ba61dafaaa4889db4f754c9cb16a897d233de473bbc887613fb1b58eab0022c",
+    ["x86_64-pc-windows-msvc"] =
+    "92d13fdcf8ca8a8c635723397f2824e5c758831f96b7a6a8966d7c2a8a0fe769",
   },
 }
