@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.gn@r4"
+IDENTITY = "envy.gn@r5"
 EXPORTABLE = true
 
 local versions = require("lib.versions")
@@ -81,5 +81,13 @@ hashes = {
     ["mac-amd64"] = "ff9d6afcadf79621840f2fb1a4d6dd62a1bffb5c677cfa0a4416abf2528947a3",
     ["mac-arm64"] = "a61b46e5e40a8c7b152c7509defb4194153a1ffa51c257732f892a2968752ce9",
     ["windows-amd64"] = "819f01138f8c4530b71f9316c7d16dd9e1f8cc5d72aa08a6e19980f05c857879",
+  },
+  -- 2026-11-17 "Remove undefined declarations in src/gn headers"
+  ["f126a26ef94d5c4620d0e7d06e2390bc621d846a"] = {
+    ["linux-amd64"] = "2f4a30c4071a4d2ae0fe541585f3118407a97bdc060bb011c280c44614d17866",
+    ["linux-arm64"] = "9dfb06d3e46a4a0f21aab53d04ff5b9c67fb5f6af907d0d0d23bf63289d0f758",
+    ["mac-amd64"] = "2d3995e7765f71994e166936ad558906cd4d6dfab633fa7fb3d8586e24eb91ad",
+    ["mac-arm64"] = "a6674b4c75702e3301740905758ffe9db6146755d6f115ff1abe45ebde4e0586",
+    ["windows-amd64"] = "0990e3a9f458fd8713e724f6916145df030e26ba4ecee5a237bc6ad41a2319b0",
   },
 }

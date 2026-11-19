@@ -1,9 +1,9 @@
 # envy package specs
 
 First-party [envy](https://github.com/envy-package-manager/envy) package specs. The repo
-is one envy bundle: `envy.package-specs@r11`. Needs envy 0.4.9 or newer, for
-`envy.loadenv_bundle`, `ENVY_BUNDLE`, a bundled module reading its caller's globals, and
-`envy.extract_all`'s `archives`.
+is one envy bundle: `envy.package-specs@r12`. Needs envy 0.7.1 or newer, the release
+CI runs. An envy older than 0.6.0 installs the specs that declare `ENV` but never applies
+it, so their state lands back in your home directory (see [Environment](#environment)).
 
 ## Use
 
@@ -11,14 +11,14 @@ is one envy bundle: `envy.package-specs@r11`. Needs envy 0.4.9 or newer, for
 -- your envy.lua
 BUNDLES = {
   ["first-party"] = {
-    identity = "envy.package-specs@r11",
+    identity = "envy.package-specs@r12",
     source = "https://github.com/envy-package-manager/package-specs.git",
     ref = "<commit sha>",
   },
 }
 
 PACKAGES = {
-  { spec = "envy.cmake@r2", bundle = "first-party", options = { version = "4.4.4" } },
+  { spec = "envy.cmake@r3", bundle = "first-party", options = { version = "4.5.1" } },
   { spec = "envy.ninja@r0", bundle = "first-party", options = { version = "1.13.2" } },
 }
 ```
@@ -79,17 +79,21 @@ a module it loads from a bundle.
 
 | spec | options | products |
 | --- | --- | --- |
-| `envy.cmake@r2` | `version` | `cmake` `ctest` `cpack` |
+| `envy.cmake@r3` | `version` | `cmake` `ctest` `cpack` |
 | `envy.doctest-cpp@r0` | `version` | `doctest_cpp_dir` `doctest_cpp_h` |
 | `envy.github@r1` | `repo` `ref` `dest` `tag` `asset` `sha256` `strip` `only` `archives` | — |
-| `envy.gn@r4` | `ref` | `gn` |
+| `envy.gn@r5` | `ref` | `gn` |
+| `envy.go@r0` | `version` | `go` `gofmt` |
 | `envy.ninja@r0` | `version` | `ninja` |
+| `envy.node@r0` | `version` | `node` `npm` `npx` |
 | `envy.protobuf@r2` | `version` | `protoc` `protobuf_includes` |
-| `envy.python@r5` | `version` `release` `provide_python` `provide_python3` | `python<maj>.<min>`, plus `python`/`python3` when asked |
-| `envy.ruff@r4` | `version` | `ruff` |
+| `envy.python@r6` | `version` `release` `provide_python` `provide_python3` | `python<maj>.<min>`, plus `python`/`python3` when asked |
+| `envy.ruff@r5` | `version` | `ruff` |
+| `envy.rust@r0` | `version` `components` `targets` | `cargo` `rustc` `rustdoc` `rustfmt` `cargo-fmt` `cargo-clippy` `clippy-driver`, plus `rust-analyzer` when asked |
 | `envy.swig@r3` | `version` | `swig` `swiglibdir` |
-| `envy.ty@r4` | `version` | `ty` |
-| `envy.uv@r4` | `version` | `uv` `uvx` |
+| `envy.ty@r5` | `version` | `ty` |
+| `envy.uv@r5` | `version` | `uv` `uvx` |
+| `envy.yarn@r0` | `version` | `yarn` |
 
 Prebuilt downloads, except SWIG, which builds from source on Unix against a PCRE2 it
 statically links itself, and uses the prebuilt swigwin on Windows. Python comes from
@@ -100,6 +104,14 @@ statically links itself, and uses the prebuilt swigwin on Windows. Python comes 
 the one spec without a `version` because it cuts no releases: `ref` is a git revision and
 the binary comes from that revision's
 [CIPD package](https://chrome-infra-packages.appspot.com/p/gn/gn).
+
+Go and Node.js are upstream's own distributions, Node's with npm and npx. Yarn is the
+single-file release of Yarn 4, run by whichever `node` product the manifest provides; it
+depends on one, so a manifest naming yarn without a node fails to resolve. Rust is
+rustup's components without rustup: `rustc`, `cargo`, the host's `rust-std`, `clippy`
+and `rustfmt` always, plus any `components` (`rust-src`, `rust-analyzer`, `llvm-tools`)
+and the `rust-std` of each of `targets` (`thumbv7em-none-eabihf`). Nothing reads a
+`rust-toolchain.toml` or adds a target later; the manifest entry is the toolchain.
 
 `envy.github@r1` is the odd one out: it names no tool and pins nothing, because the
 manifest entry supplies the repository. Two forms, and exactly one of them per entry --
@@ -113,6 +125,26 @@ rather than a binary: consumers vendor it, or reach it with `envy.package`. A th
 library that needs build phases of its own still writes its own spec -- this is for the
 ones that just need to be in the tree. Manifests usually reach it through `lib.github`
 rather than writing the entry out; see above.
+
+## Environment
+
+`envy.go`, `envy.node`, `envy.yarn` and `envy.rust` declare `ENV`. In a shell activated in
+the project (envy's shell hook, `eval "$(envy activate zsh)"`, or `envy run --activate`)
+the tool is on `PATH`, and what it writes -- modules, registries, build caches, global
+installs -- lands under `.envy/` in the project root rather than your home directory.
+`envy init` already gitignores `.envy/`. A package that depends on one of these gets the
+same variables in its own build, pointed into that build's temporary directory, so no two
+builds share state with each other or with the project. Each spec's `ENV` says which
+variables it sets and why.
+
+Pins hold too: `GOTOOLCHAIN=local` keeps go from downloading whatever toolchain a
+`go.mod` asks for, and there is no rustup to switch rust's.
+
+envy applies `ENV` only to activated shells and dependents' builds, so a product script
+run from a plain shell (`./bin/cargo`) falls back to `~/.cargo`. Two things stay per-user
+even when activated: Go's telemetry counters, which no variable relocates, and the header
+tarballs node-gyp downloads for native addons, since npm warns on every command about the
+variable that would move them.
 
 ## Layout
 
@@ -140,7 +172,10 @@ release form insists on a `sha256` that envy itself would let you omit.)
 
 Conventions: `version` never carries a leading `v` (specs add it to the tag), platform
 keys are upstream's own artifact naming, and products are named after the binary. GN's
-hash table is keyed by git revision instead, one entry per `ref`.
+hash table is keyed by git revision instead, one entry per `ref`. Rust's holds one hash
+per version, of that release's channel manifest, which carries the hash of every
+component for every target; yarn's and doctest's hold one per version because the one
+file serves every platform.
 
 ## CI
 
@@ -149,5 +184,6 @@ from an empty cache, on each pull request and nightly: an upstream artifact can 
 vanish without a commit here. It reads the versions out of the specs, so a new one is
 covered as soon as its hashes land. A spec whose `OPTIONS` does not constrain exactly one
 option to `choices` has to say how to enumerate it in `.github/ci/cases.lua`; CI fails
-until it does. Only the checked-out revisions are tested, since a broken one is fixed by
+until it does. A spec that resolves only beside another one (yarn needs a `node`) names
+its companion there too. Only the checked-out revisions are tested, since a broken one is fixed by
 cutting the next.

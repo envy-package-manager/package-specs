@@ -43,3 +43,4 @@ luac.out
 # envy output from running examples/envy.lua
 examples/bin/
 examples/vendor/
+examples/.envy/

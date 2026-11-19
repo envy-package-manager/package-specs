@@ -1,5 +1,5 @@
 -- @envy schema "1"
-IDENTITY = "envy.cmake@r2"
+IDENTITY = "envy.cmake@r3"
 EXPORTABLE = true
 
 local github = require("lib.github")
@@ -111,5 +111,15 @@ hashes = {
     "a1b6cc63636a0e55c63257cf3315a8a5f129e42fade25db1afea4ff8ab06f25e",
     ["windows-x86_64"] =
     "bace36e94b31c68ab6fa295f26dfa11219e0701cf7c94b0284a7d1cb13dac536",
+  },
+  ["4.5.1"] = {
+    ["macos-universal"] =
+    "e1fb288543e4eb2a410e385ecebc64323bda51f0205782f2b094ccd5d572ca2d",
+    ["linux-x86_64"] =
+    "83b71181fb62b4fe8f26067a9321448572e7a43bd04ff6c7f54a24c33698f16d",
+    ["linux-aarch64"] =
+    "3bec208f11ed96c173032eeaf97937c54dd246acefee22acd7794a6b4e70d536",
+    ["windows-x86_64"] =
+    "bfe6eadb245dc8213e0d3feea316b520cb2aae92f5667ffd76059ba6b05c430c",
   },
 }
